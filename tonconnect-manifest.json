@@ -1,7 +1,7 @@
 {
   "name": "TON DEX",
-  "url": "https://github.com/H1LIASSS/TonDex/blob/main/main.html", 
-  "iconUrl": "https://raw.githubusercontent.com/H1LIASSS/TonDex/main/content/connect-logo.png", 
+  "url": "127.0.0.1",
+  "iconUrl": "https://raw.githubusercontent.com/H1LIASSS/TonDex/main/content/connect-logo.png",
   "termsOfUseUrl": "<terms-of-use-url>",
   "privacyPolicyUrl": "<privacy-policy-url>"
 }
