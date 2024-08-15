@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+	<h no-repeat fixed centeread>
+	<title>DEX</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="content/logotype.png">
+	<script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+	<style>
+	body {
+  	background: url('content/background.png') no-repeat fixed center ;
+	}
+	</style>
+</head>
+<body>
+
+	<div id='ton-connect'>
+		
+		<script>
+			async function connectToWallet() {
+				const connectedWallet = await tonConnectUI.connectWallet();
+				// Do something with connectedWallet if needed
+				console.log(connectedWallet);
+			}
+		
+			// Call the function
+			connectToWallet().catch(error => {
+				console.error("Error connecting to wallet:", error);
+			});
+		</script>	
+
+		<script>
+				const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+					manifestUrl: 'https://raw.githubusercontent.com/H1LIASSS/tondex-manifest/main/tonconnect-manifest.json',
+					buttonRootId: 'ton-connect'
+				});
+		</script>
+	</div>
+</body>
