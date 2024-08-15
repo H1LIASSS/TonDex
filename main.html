@@ -11,30 +11,36 @@
 	body {
   	background: url('content/background.png') no-repeat fixed center ;
 	}
+
+	#ton-connect{
+		position: absolute;
+		right: 0;
+		margin-right: 20px;
+	}
 	</style>
 </head>
 <body>
 
 	<div id='ton-connect'>
-		
-		<script>
-			async function connectToWallet() {
-				const connectedWallet = await tonConnectUI.connectWallet();
-				// Do something with connectedWallet if needed
-				console.log(connectedWallet);
-			}
-		
-			// Call the function
-			connectToWallet().catch(error => {
-				console.error("Error connecting to wallet:", error);
-			});
-		</script>	
-
-		<script>
-				const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-					manifestUrl: 'https://raw.githubusercontent.com/H1LIASSS/TonDex/main/tonconnect-manifest.json', //EDIT ON RELEASE
-					buttonRootId: 'ton-connect'
-				});
-		</script>
 	</div>
+
+	<script>
+		async function connectToWallet() {
+			const connectedWallet = await tonConnectUI.connectWallet();
+			// Do something with connectedWallet if needed
+			console.log(connectedWallet);
+		}
+	
+		// Call the function
+		connectToWallet().catch(error => {
+			console.error("Error connecting to wallet:", error);
+		});
+	</script>	
+
+	<script>
+			const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+				manifestUrl: 'https://raw.githubusercontent.com/H1LIASSS/TonDex/main/tonconnect-manifest.json', //EDIT ON RELEASE
+				buttonRootId: 'ton-connect'
+			});
+	</script>
 </body>
