@@ -1,7 +1,7 @@
 {
-    "name": "TON DEX", //Required
-    "url": "https://github.com/H1LIASSS/TonBlockchainSwapDEX/main.html", //Required
-    "iconUrl": "https://github.com/H1LIASSS/TonBlockchainSwapDEX/blob/main/content/connect-logo.png", //Required
-    "termsOfUseUrl": "<terms-of-use-url>",     // optional
-    "privacyPolicyUrl": "<privacy-policy-url>" // optional
+  "name": "TON DEX", //Required
+  "url": "https://github.com/H1LIASSS/TonDex/blob/main/main.html", //Required
+  "iconUrl": "https://raw.githubusercontent.com/H1LIASSS/TonDex/main/content/connect-logo.png", //Required
+  "termsOfUseUrl": "<terms-of-use-url>", // optional
+  "privacyPolicyUrl": "<privacy-policy-url>" // optional
 }
