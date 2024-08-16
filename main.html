@@ -18,29 +18,72 @@
 		margin-right: 20px;
 	}
 	</style>
+	
 </head>
 <body>
 
-	<div id='ton-connect'>
-	</div>
+	<div id='ton-connect'></div>
+	<div id = 'trade'>
+		<div id = 'from'>
+			<h1>amnt 1:</h1>
+			<input type="text" id="swap-from" name="name" required minlength="4" maxlength="8" size="10" /> is TOKEN A
+			<input type="text" id="swap-to" name="name" required minlength="4" maxlength="8" size="10" /> ON CONVERT
+		</div>
+		<div id = 'to'>
+			<h1>amnt 2:</h1>
+			<input type="text" id="swap-from" name="name" required minlength="4" maxlength="8" size="10" /> is TOKEN B
+			<input type="text" id="swap-to" name="name" required minlength="4" maxlength="8" size="10" /> ON RECIEVE
+			<button type="button">Calculate</button>
+		</div>
 
+
+	</div>
 	<script>
-		async function connectToWallet() {
-			const connectedWallet = await tonConnectUI.connectWallet();
-			// Do something with connectedWallet if needed
-			console.log(connectedWallet);
-		}
-	
-		// Call the function
-		connectToWallet().catch(error => {
-			console.error("Error connecting to wallet:", error);
-		});
-	</script>	
-	
-	<script>
-			const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+		const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
 				manifestUrl: 'https://raw.githubusercontent.com/H1LIASSS/TonDex/main/tonconnect-manifest.json', //EDIT ON RELEASE
 				buttonRootId: 'ton-connect'
 			});
+
+		let connectedWallet;
+		let address, publicKey;
+
+
+		async function connectToWallet() {
+			connectedWallet = await tonConnectUI.connectWallet();
+			// Do something with connectedWallet if needed
+			console.log(connectedWallet);
+			address = await connectedWallet.account.address;
+			publicKey = await connectedWallet.account.publicKey;
+
+			try {
+                const response = await fetch(`https://testnet.toncenter.com/api/v2/getAddressInformation?address=${address}`);
+                const data = await response.json();
+                if (data.ok) {
+                    const balance = data.result.balance; // Balance is in nanoTON (1 TON = 1e9 nanoTON)
+                    console.log(`Balance: ${balance} nanoTON`);
+                } else {
+                    throw new Error('Failed to fetch balance');
+                }
+            } catch (error) {
+                console.error('Error fetching balance:', error);
+            }
+		}
+		connectToWallet();
+
+		async function getWalletBalance(address) {
+
+        }
+
+		getWalletBalance(publicKey)
+		
+		// Call the function
+		//connectToWallet().catch(error => {
+		//	console.error("Error connecting to wallet:", error);
+		//});
+
+		
 	</script>
+
+
+
 </body>
